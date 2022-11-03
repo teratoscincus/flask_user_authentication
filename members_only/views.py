@@ -106,3 +106,11 @@ def login():
 
         # Login not successful - rerender template.
         return render_template("login.html")
+
+
+@view.route("/log_out")
+def log_out():
+    """Clear session and redirect to index page."""
+    session.clear()
+
+    return redirect(url_for("views.index"))
