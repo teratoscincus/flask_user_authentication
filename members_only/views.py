@@ -112,5 +112,6 @@ def login():
 def log_out():
     """Clear session and redirect to index page."""
     session.clear()
+    flash("You have been logged out")
 
     return redirect(url_for("views.index"))

@@ -22,6 +22,17 @@
     }
 }
 
+@keyframes ok-box-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      box-shadow: 0 0 5px #FFF,
+        0 0 15px var(--ok),
+        0 0 35px var(--ok);
+    }
+    20%, 24%, 55% {       
+      box-shadow: none;
+    }
+}
+
 /* General */
 
 * {
@@ -79,6 +90,16 @@ button:hover {
     border: 2px solid var(--warning);
     border-radius: 3px;
     animation: warning-box-flicker 1.5s infinite alternate;
+}
+
+.ok {
+    font-weight: 900;
+    background: var(--bg);
+    color: var(--ok);
+    padding: 1em;
+    border: 2px solid var(--ok);
+    border-radius: 3px;
+    animation: ok-box-flicker 1.5s infinite alternate;
 }
 
 /* Header navigation bar */

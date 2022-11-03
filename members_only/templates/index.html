@@ -18,4 +18,12 @@
   <a class="btn" href="{{ url_for('views.register') }}" class="nav__link">Register</a>
 </div>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  {% for message in messages %}
+    <p class="ok" >{{ message }}</p>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+
 {% endblock %}
