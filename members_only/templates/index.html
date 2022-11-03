@@ -2,7 +2,14 @@
 {% block title %}Index{% endblock %}
 
 {% block content %}
-<h1>Welcome to this humble web page</h1>
-<p>I do hope that you'll like it =)</p>
-<p>{{ content }}</p>
+
+{% if session["username"] %}
+  <h1>Welcome {{ session["username"] }}</h1>
+  <p>I do hope that you are having a great day =)</p>
+{% else %}
+  <h1>Welcome to this humble web page</h1>
+  <p>I do hope that you'll like it =)</p>
+{% endif %}
+
+
 {% endblock %}
