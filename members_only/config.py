@@ -18,7 +18,9 @@ DEBUG = True
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # Development database
+DATABASE_FILE = "db.sqlite3"
+SCHEMA_FILE = "schema.sql"
+
 DB_DIR = APP_DIR / "database"
-DATABASE = "db.sqlite3"
-DATABASE_PATH = DB_DIR / DATABASE
-SCHEMA_PATH = DB_DIR / "schema.sql"
+DATABASE_PATH = DB_DIR / DATABASE_FILE
+SCHEMA_PATH = DB_DIR / SCHEMA_FILE
