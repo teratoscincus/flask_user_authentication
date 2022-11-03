@@ -9,14 +9,14 @@
   <label for="password">Password</label>
   <input type="password" name="password" placeholder="Enter a password" value="{{ request.form['password'] }}">
   <button type="submit">Submit</button>
-</form>
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-      {{ message }}
-    {% endfor %}
-  {% endif %}
-{% endwith %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p class="warning" >{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</form>
 
 {% endblock %}
