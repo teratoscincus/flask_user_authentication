@@ -12,7 +12,7 @@ class Database:
 
     def __init__(self, database):
         """
-        Init connection and cursor attributes.
+        Init connection and cursor attributes, and enable foreign key support.
 
         If the database file doesn't yet exist, one will be created.
 
@@ -22,6 +22,9 @@ class Database:
         # Establish connection and create cursor.
         self.connection = sqlite3.connect(database)
         self.cursor = self.connection.cursor()
+
+        # Enable foreign key on each connection.
+        self.connection.execute("PRAGMA foreign_keys = ON;")
 
     def create_tables(self, schema):
         """
@@ -39,7 +42,6 @@ if __name__ == "__main__":
 
     # Create database and tables.
     db = Database(config.DATABASE_PATH)
-    # db = Database("./demo.sqlite3")
     print(f"Database successfully created")
 
     db.create_tables(config.SCHEMA_PATH)
