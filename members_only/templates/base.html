@@ -15,9 +15,14 @@
   <header>
     <nav>
       <h1>Flask Web App</h1>
-      <ul>
-        <li><a href="{{ url_for('views.index') }}" class="nav__link">Home</a></li>
-      </ul>
+      <div class="links">
+        <ul>
+          <li><a href="{{ url_for('views.index') }}" class="nav__link">Home</a></li>
+        </ul>
+        <ul>
+          <li><a href="{{ url_for('views.register') }}" class="nav__link">Register</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
