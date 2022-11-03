@@ -1,5 +1,8 @@
+from time import sleep
+
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlite3 import IntegrityError, OperationalError
 
 from .database.database import Database
 from .config import DATABASE_PATH
@@ -29,10 +32,9 @@ def register():
         elif not password:
             flash("Password is required.")
         else:
+            # Hash password before writing to database.
+            password_hash = generate_password_hash(password)
             try:
-                # Make sure password is hashed successfully.
-                password_hash = generate_password_hash(password)
-
                 # Try to insert row into bd table, fails if username already exists.
                 db.cursor.execute(
                     f"""
@@ -42,10 +44,16 @@ def register():
                 )
                 # Make sure changes are committed.
                 db.connection.commit()
-            except:
-                flash(f"User {username} is already registered.")
-                # Rerender registration form if given username is taken.
-                return render_template("register.html")
+            except IntegrityError:
+                # Given username is taken.
+                flash(f"'{username}' is already registered.")
+            except OperationalError:
+                # Try committing again after 1 second.
+                sleep(1)
+                db.connection.commit()
             else:
                 # Redirect to homepage if registration was successful.
                 return redirect(url_for("views.index"))
+
+        # Rerender registration template is something went wrong.
+        return render_template("register.html")
