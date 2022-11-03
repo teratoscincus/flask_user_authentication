@@ -4,8 +4,22 @@
     --bg: #282828;
     --fg: #EBDBB2;
     --primary: #B8BB26;
+    --primary--light: #dee044;
     --warning: #FB4934;
     --ok: #8EC07C;
+}
+
+/* Animations */
+
+@keyframes warning-box-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      box-shadow: 0 0 5px #FFF,
+        0 0 15px var(--warning),
+        0 0 35px var(--warning);
+    }
+    20%, 24%, 55% {       
+      box-shadow: none;
+    }
 }
 
 /* General */
@@ -30,12 +44,18 @@ main {
     margin: 0 2em 0 2em;
 }
 
+h1 {
+    margin-bottom: 0.5em;
+}
+
 .warning {
     font-weight: 900;
     background: var(--bg);
     color: var(--warning);
     padding: 1em;
     border: 2px solid var(--warning);
+    border-radius: 3px;
+    animation: warning-box-flicker 1.5s infinite alternate;
 }
 
 /* Header navigation bar */
@@ -53,6 +73,7 @@ header nav {
 
 header nav h1 {
     color: var(--primary);
+    margin: 0;
 }
 
 header nav .links {
@@ -93,6 +114,7 @@ input {
     border: 1px solid var(--primary);
     border-radius: 3px;
     transition: ease 0.35s;
+    padding: 0.5em 0.5em 0.5em 0.5em;
     margin-bottom: 1em;
 }
 
@@ -107,16 +129,18 @@ input:focus {
 form button {
     font-weight: 900;
     background: var(--primary);
-    color: #282828;
+    color: var(--bg);
     border: 1px solid var(--primary);
     max-width: 7em;
     margin-bottom: 1em;
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 3px;
+    transition: ease 0.35s;
 }
 
 form button:focus,
 form button:hover {
+    background: var(--primary--light);
     border: 1px solid var(--primary);
     box-shadow: 0 0 5px #FFF,
         0 0 15px var(--primary),
