@@ -1,3 +1,13 @@
+/* Color variables */
+
+:root {
+    --bg: #282828;
+    --fg: #EBDBB2;
+    --primary: #B8BB26;
+    --warning: #FB4934;
+    --ok: #8EC07C;
+}
+
 /* General */
 
 * {
@@ -10,50 +20,63 @@
 }
 
 body {
-    background: #282828;
-    color: #EBDBB2;
+    background: var(--bg);
+    color: var(--fg);
 }
 
 main {
-    background: #282828;
-    color: #EBDBB2;
+    background: var(--bg);
+    color: var(--fg);
     margin: 0 2em 0 2em;
+}
+
+.warning {
+    font-weight: 900;
+    background: var(--bg);
+    color: var(--warning);
+    padding: 1em;
+    border: 2px solid var(--warning);
 }
 
 /* Header navigation bar */
 
 header nav {
-    background: #282828;
-    color: #EBDBB2;
+    background: var(--bg);
+    color: var(--fg);
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1em;
     padding: 1em 1em 1em 1em;
-    border-bottom: 1px solid #EBDBB2;
+    border-bottom: 1px solid var(--fg);
 }
 
 header nav h1 {
-    color: #B8BB26;
+    color: var(--primary);
+}
+
+header nav .links {
+    display: flex;
+    gap: 1em;
 }
 
 .nav__link {
     background: inherit;
-    color: #B8BB26;
+    color: var(--primary);
     font-weight: 900;
     transition: ease 0.35s;
 }
 
 .nav__link:visited {
-    color: #B8BB26;
+    color: var(--primary);
 }
 
 .nav__link:focus,
 .nav__link:hover {
-    color: #EBDBB2;
+    color: var(--fg);
     text-shadow: 0 0 5px #FFF,
-        0 0 15px #EBDBB2,
-        0 0 35px #EBDBB2;
+        0 0 15px var(--fg),
+        0 0 35px var(--fg);
 }
 
 /* Forms */
@@ -65,36 +88,37 @@ form {
 }
 
 input {
-    background: #282828;
-    color: #EBDBB2;
-    border: 1px solid #B8BB26;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--primary);
     border-radius: 3px;
     transition: ease 0.35s;
     margin-bottom: 1em;
 }
 
 input:focus {
-    color: #EBDBB2;
-    border: 1px solid #B8BB26;
+    color: var(--fg);
+    border: 1px solid var(--primary);
     box-shadow: 0 0 5px #FFF,
-        0 0 15px #B8BB26,
-        0 0 35px #B8BB26;
+        0 0 15px var(--primary),
+        0 0 35px var(--primary);
 }
 
 form button {
     font-weight: 900;
-    background: #B8BB26;
+    background: var(--primary);
     color: #282828;
-    border: 1px solid #B8BB26;
+    border: 1px solid var(--primary);
     max-width: 7em;
+    margin-bottom: 1em;
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 3px;
 }
 
 form button:focus,
 form button:hover {
-    border: 1px solid #B8BB26;
+    border: 1px solid var(--primary);
     box-shadow: 0 0 5px #FFF,
-        0 0 15px #B8BB26,
-        0 0 35px #B8BB26;
+        0 0 15px var(--primary),
+        0 0 35px var(--primary);
 }
