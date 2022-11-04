@@ -15,7 +15,7 @@
   <h2>Not registered yet?</h2>
   <p>You should consider registering</p>
   <p>It will be a blast!</p>
-  <a class="btn" href="{{ url_for('views.register') }}" class="nav__link">Register</a>
+  <a class="btn" href="{{ url_for('auth.register') }}" class="nav__link">Register</a>
 </div>
 
 {% with messages = get_flashed_messages() %}

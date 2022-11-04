@@ -21,14 +21,14 @@
         </ul>
         {% if not session["username"] %}
           <ul>
-            <li><a href="{{ url_for('views.register') }}" class="nav__link">Register</a></li>
+            <li><a href="{{ url_for('auth.register') }}" class="nav__link">Register</a></li>
           </ul>
           <ul>
-            <li><a href="{{ url_for('views.login') }}" class="nav__link">Login</a></li>
+            <li><a href="{{ url_for('auth.login') }}" class="nav__link">Login</a></li>
           </ul>
         {% else %}
           <ul>
-            <li><a href="{{ url_for('views.log_out') }}" class="nav__link">Log out</a></li>
+            <li><a href="{{ url_for('auth.log_out') }}" class="nav__link">Log out</a></li>
           </ul>
         {% endif %}
       </div>
