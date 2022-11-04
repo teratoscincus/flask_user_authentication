@@ -8,6 +8,7 @@ from .database.database import Database
 from .config import DATABASE_PATH
 
 view = Blueprint("views", __name__)
+auth = Blueprint("auth", __name__, url_prefix="/auth")
 
 
 @view.route("/")
@@ -15,7 +16,7 @@ def index():
     return render_template("index.html")
 
 
-@view.route("/register", methods=("GET", "POST"))
+@auth.route("/register", methods=("GET", "POST"))
 def register():
     if request.method != "POST":
         # Render registration template for all methods except "POST".
@@ -59,7 +60,7 @@ def register():
         return render_template("register.html")
 
 
-@view.route("/login", methods=("GET", "POST"))
+@auth.route("/login", methods=("GET", "POST"))
 def login():
     if request.method != "POST":
         # Render login template for all methods except "POST".
@@ -108,7 +109,7 @@ def login():
         return render_template("login.html")
 
 
-@view.route("/log_out")
+@auth.route("/log_out")
 def log_out():
     """Clear session and redirect to index page."""
     session.clear()
