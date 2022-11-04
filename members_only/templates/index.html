@@ -9,14 +9,14 @@
 {% else %}
   <h1>Welcome to this humble web page</h1>
   <p>I do hope that you'll like it =)</p>
+  
+  <div class="call-to-action">
+    <h2>Not registered yet?</h2>
+    <p>You should consider registering</p>
+    <p>It will be a blast!</p>
+    <a class="btn" href="{{ url_for('auth.register') }}" class="nav__link">Register</a>
+  </div>
 {% endif %}
-
-<div class="call-to-action">
-  <h2>Not registered yet?</h2>
-  <p>You should consider registering</p>
-  <p>It will be a blast!</p>
-  <a class="btn" href="{{ url_for('auth.register') }}" class="nav__link">Register</a>
-</div>
 
 {% with messages = get_flashed_messages() %}
 {% if messages %}
