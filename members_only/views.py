@@ -24,6 +24,7 @@ def register():
     else:
         given_username = request.form["username"]
         given_password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
 
         db = Database(DATABASE_PATH)
 
@@ -32,6 +33,8 @@ def register():
             flash("Username is required.")
         elif not given_password:
             flash("Password is required.")
+        elif given_password != confirm_password:
+            flash("You didn't enter the same password.")
         else:
             # Hash password before writing to database.
             password_hash = generate_password_hash(given_password)

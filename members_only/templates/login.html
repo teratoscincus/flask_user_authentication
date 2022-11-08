@@ -6,8 +6,10 @@
 <form method="post">
   <label for="username">Username</label>
   <input type="text" name="username" placeholder="Enter a username" value="{{ request.form['username'] }}">
+  
   <label for="password">Password</label>
   <input type="password" name="password" placeholder="Enter a password" value="{{ request.form['password'] }}">
+  
   <button type="submit">Submit</button>
 
   {% with messages = get_flashed_messages() %}
