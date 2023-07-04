@@ -1,5 +1,5 @@
 # Dotenv
-.env
+.*env
 
 # Python
 __pycache__/
